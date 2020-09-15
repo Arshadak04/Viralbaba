@@ -15,16 +15,17 @@ router.post('/uploader', multipartMiddleware, function(req, res) {
     fs.readFile(req.files.upload.path, function (err, data) {
         // console.log(req.files.upload.path);
         var newPath = __dirname + '/public/uploads/' + req.files.upload.name;
+        console.log(newPath);
         fs.writeFile(newPath, data, function (err) {
             if (err) console.log({err: err});
             else {
                 html = "";
                 html += "<script type='text/javascript'>";
                 html += "    var funcNum = " + req.query.CKEditorFuncNum + ";";
-                html += "    var url     = \"/public/uploads/" + req.files.upload.name + "\";";//yaha dekh lena thoda
+                html += "    var url     = \"public/uploads/" + req.files.upload.name + "\";";//yaha dekh lena thoda
                 html += "    var message = \"Uploaded file successfully\";";
                 html += "";
-                //  console.log('url:'+ url);
+            
                 html += "    window.parent.CKEDITOR.tools.callFunction(funcNum, url, message);";
                 html += "</script>";
                 res.send(html);
@@ -32,7 +33,7 @@ router.post('/uploader', multipartMiddleware, function(req, res) {
         });
     });
 });
-console.log(url);
+// console.log(url);
 module.exports = router;
 
 // html += "    const funcNum = " + req.query.CKEditorFuncNum + ";";
