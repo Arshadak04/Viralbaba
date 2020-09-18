@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/posts" method="POST">
+        <textarea name="ckeditor" id="ckeditor" cols="30" rows="10"></textarea>
+
+        <input type="submit" value="save-post">
+    </form>
+
+</body>
+</html>
+<script src="https://cdn.ckeditor.com/4.6.0/standard/ckeditor.js"></script>
+<script type="text/javascript">
+
+    CKEDITOR.replace('ckeditor', {
+        filebrowserUploadUrl: '/uploader'
+    });
+</script>
